@@ -1,0 +1,667 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no">
+<title>Sample Solution to Assignment 2, Problem 3 | Assignments | Effective Programming in C and C++ | Electrical Engineering and Computer Science | MIT OpenCourseWare</title>
+<!-- Begin Automatic Metadata Insertion --><meta content="6-s096-effective-programming-in-c-and-c-january-iap-2014" name="WT.cg_n">
+<meta content="Sample Solution to Assignment 2, Problem 3" name="WT.cg_s">
+<meta content="This section includes the solution code and output using the test data for Assignment 2, Problem 3." name="Description">
+<meta content="Kessler, Andre" name="Author">
+<meta content="programming,C,C++,structure,object-oriented,code,memory,abstraction,assembly,stack,software,inheritance,scope,design,environment,cost,code review,project,best practice,Programming Languages,Software Design and Engineering" name="keywords">
+<meta content="6.S096 Effective Programming in C and C++ | Sample Solution to Assignment 2, Problem 3" name="Search_Display">
+<meta content="Programming Languages" itemprop="about">
+<meta content="Software Design and Engineering" itemprop="about">
+<!-- End Automatic Metadata Insertion --><link title="default" rel="stylesheet" type="text/css" href="../../../common/styles/grid.css">
+<link title="default" rel="stylesheet" type="text/css" href="../../../common/styles/base.css">
+<link title="default" rel="stylesheet" type="text/css" href="../../../common/styles/menu.css">
+<link title="default" rel="stylesheet" type="text/css" href="../../../common/styles/jquery.bubblepopup.css">
+<link title="default" rel="stylesheet" type="text/css" href="../../../common/styles/courses.css">
+<link title="default" rel="stylesheet" type="text/css" href="../../../common/styles/courses_new.css">
+<link href="http://ocw.mit.edu/xml/ocwcc.rdf" type="application/rdf+xml" rel="metadata">
+<link rel="canonical" href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-s096-effective-programming-in-c-and-c-january-iap-2014/assignments/sample-solution-to-assignment-2-problem-3">
+<link rel="apple-touch-icon" href="../../../common/images/apple-touch-icon.png">
+<script type="text/javascript" src="../../../common/scripts/jquery.js"></script><script type="text/javascript" src="../../../common/scripts/ocw-media-utils-offline.js"></script><script type="text/javascript" src="../../../common/scripts/ocw-offline.js"></script><script type="text/javascript" src="../../../common/scripts/jquery.bubblepopup.min.js"></script><script type="text/javascript" src="../../../common/scripts/bubble-popup-offline.js"></script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage">
+        
+	
+
+        <div id="top">
+			<div id="grid">
+				
+				
+					
+<div id="portletwrapper-6f63772e746f70706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a736974652d686561646572" class="portletWrapper kssattr-portlethash-6f63772e746f70706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a736974652d686561646572">
+<div class="portletStaticText portlet-static-site-header">
+<div id="banner" role="banner" class="grid_6 alpha"><a href="http://ocw.mit.edu/"><img src="../../../common/images/ocw_mast.png" alt="MIT OpenCourseWare, Massachusetts Institute of Technology" class="logo"></a></div>
+<form action="http://ocw.mit.edu/subscribe/index.htm?utm_source=header" method="get">
+    <div id="subscribe" role="form toolbar" class="grid_6 omega">
+    <div class="module">
+    <table class="social"><tbody><tr>
+<td class="text">Subscribe to the<br>
+                OCW Newsletter</td>
+                <td class="black"><input type="text" onclick="clearEmailBox()" onblur="fillEmailBox()" value="Enter Email" class="greytext emailField" id="email" name="fromemail"></td>
+                <td class="black"><input type="image" src="../../../common/images/button_subscribe.png" alt="Subscribe" class="sub_button"></td>
+                <td>
+<a href="http://facebook.com/mitocw"><img src="../../../common/images/icon_fb.png" alt="Click to visit our Facebook page."></a><a href="http://twitter.com/mitocw"><img src="../../../common/images/icon_tw.png" alt="Click to visit our Twitter feed."></a>
+</td>
+            </tr></tbody></table>
+</div>
+    <p class="helplinks"><a href="http://ocw.mit.edu/help">Help</a>   |   <a href="../../../common/jsp/feedback.htm">Contact Us</a></p>
+    </div>
+    <div class="clear"> </div>
+</form>
+</div>
+
+</div>
+
+
+
+
+
+<div id="mega" role="navigation" class="grid_8 alpha">        
+	<ul id="menu">
+<li id="menu_home">
+            <a href="http://ocw.mit.edu/"><img src="../../../common/images/top-nav_home.png" class="home_icon" alt="Click for site home page."></a><!-- Begin Home Item -->
+        </li>
+<!-- End Home Item -->        
+        <li class="selected">
+            <a href="#" class="drop">Courses</a><!-- Begin 5 columns Item -->
+            <div class="dropdown_5columns-a mega-courses">                    
+                <div class="col_1a">
+                    <div class="row_1a">
+                        <div class="quart">
+                            <h2 class="nav">Find courses by:</h2>
+                            <ul class="nav-bullet find_by">
+<li><a href="http://ocw.mit.edu/courses/find-by-topic/">Topic</a></li>
+                                <li><a href="http://ocw.mit.edu/courses/find-by-number/">MIT Course Number</a></li>
+                                <li><a href="http://ocw.mit.edu/courses/find-by-department/">Department</a></li>
+                            </ul>
+</div>
+                        <div class="quart">
+                            <h2 class="nav">Collections</h2>
+                            <ul class="nav-bullet">
+<li><a href="http://ocw.mit.edu/courses/audio-video-courses/">Audio/Video Lectures</a></li>
+                                <li><a href="http://ocw.mit.edu/courses/online-textbooks/">Online Textbooks</a></li>
+                                <li><a href="http://ocw.mit.edu/courses/new-courses/">New Courses</a></li>
+                                <li><a href="http://ocw.mit.edu/courses/most-visited-courses/">Most Visited Courses</a></li>
+                                <li><a href="http://ocw.mit.edu/courses/ocw-scholar/">OCW Scholar Courses</a></li>
+                                <li><a href="http://ocw.mit.edu/courses/this-course-at-mit/">This Course at MIT</a></li>
+                                <li><a href="http://ocw.mit.edu/resources/">Supplemental Resources</a></li>
+                            </ul>
+</div>
+                        <div class="clear"> </div>
+                    </div>
+                    <div class="row_1b">
+                        <h2 class="nav">Cross-Disciplinary Topic Lists</h2>
+                        <div class="quart">
+                        <ul class="nav-bullet">
+<li><a href="http://ocw.mit.edu/courses/energy-courses">Energy</a></li>
+                            <li><a href="http://ocw.mit.edu/courses/entrepreneurship">Entrepreneurship</a></li>
+                            <li><a href="http://ocw.mit.edu/courses/environment-courses">Environment</a></li>
+                        </ul>
+</div>    
+                        <div class="quart">
+                        <ul class="nav-bullet">
+<li><a href="http://ocw.mit.edu/courses/intro-programming">Introductory Programming</a></li>
+                            <li><a href="http://ocw.mit.edu/courses/life-sciences">Life Sciences</a></li>
+                            <li><a href="http://ocw.mit.edu/courses/transportation-courses">Transportation</a></li>
+                        </ul>
+</div>
+                        <div class="clear"> </div>
+                    </div>
+                    <div class="clear"> </div>
+                </div>
+                <div class="col_1b">
+                    <h2 class="nav">Translated Courses</h2>
+                    <ul class="nav-bullet">
+<li><a href="http://ocw.mit.edu/courses/translated-courses/traditional-chinese">繁體字 / Traditional Chinese</a></li>
+                        <li><a href="http://ocw.mit.edu/courses/translated-courses/simplified-chinese">简体字 / Simplified Chinese</a></li>
+                        <li><a href="http://ocw.mit.edu/courses/translated-courses/spanish">Español / Spanish</a></li>
+                        <li><a href="http://ocw.mit.edu/courses/translated-courses/portuguese">Português / Portuguese</a></li>
+                        <li><a href="http://ocw.mit.edu/courses/translated-courses/thai">ภาษาเขียน / Thai</a></li>
+                        <li><a href="http://ocw.mit.edu/courses/translated-courses/persian">فارسی / Persian</a></li>
+                        <li><a href="http://ocw.mit.edu/courses/translated-courses/turkish">Türkçe / Turkish</a></li>
+                        <li><a href="http://ocw.mit.edu/courses/translated-courses/korean">(비디오)한국 / Korean</a></li>
+                        <li><a href="http://ocw.mit.edu/courses/translated-courses">More...</a></li>
+                    </ul>
+</div>
+            </div>
+        </li>
+        <li>
+            <a href="" class="drop">About</a>
+            <div class="dropdown_1column-a">
+                <div class="col_1">
+                    <ul class="nav-bullet mega-div-bottom">
+<li><a href="http://ocw.mit.edu/about/">About MIT OpenCourseWare</a></li>
+                    </ul>
+<ul class="nav-bullet mega-div-bottom">
+<li><a href="http://ocw.mit.edu/about/site-statistics/">Site Stats</a></li>
+                        <li><a href="http://ocw.mit.edu/about/ocw-stories/">OCW Stories</a></li>
+                        <li><a href="http://ocw.mit.edu/about/ocw-consortium/">OpenCourseWare Consortium</a></li>
+                    </ul>
+<ul class="nav-bullet mega-div-bottom">
+<li><a href="http://ocw.mit.edu/about/media-coverage/">Media Coverage</a></li>
+                        <li><a href="http://ocw.mit.edu/about/newsletter/">Newsletter</a></li>
+                        <li><a href="http://ocw.mit.edu/about/media-coverage/press-releases/">Press Releases</a></li>
+                    </ul>
+<ul class="nav-bullet">
+<li><a href="http://ocw.mit.edu/about/next-decade/">OCW's Next Decade</a></li>
+                    </ul>
+</div>
+            </div>  
+        </li>    
+        <li>
+            <a href="" class="drop">Donate</a>        
+            <div class="dropdown_1column-a">
+                    <div class="col_1">
+                        <ul class="nav-bullet mega-div-bottom">
+<li><a href="http://ocw.mit.edu/donate/">Make a Donation</a></li>
+                            <li><a href="http://ocw.mit.edu/donate/why-donate/">Why Donate?</a></li>
+                            <li><a href="http://ocw.mit.edu/donate/ocw-course-champions-program/">Become a Course Champion</a></li>
+                            <li><a href="http://ocw.mit.edu/donate/our-supporters/">Our Supporters</a></li>
+                            <li><a href="http://ocw.mit.edu/donate/other-ways-to-contribute/">Other Ways to Contribute</a></li>
+                            <li><a href="http://ocw.mit.edu/donate/shop-ocw">Shop OCW</a></li>
+                        </ul>
+<ul class="nav-bullet">
+<li><a href="http://ocw.mit.edu/support/">Become a Corporate Sponsor</a></li>
+                        </ul>
+</div>
+            </div>            
+        </li>        
+        <li>
+            <a href="" class="drop">Featured Sites</a>        
+            <div class="dropdown_1column-a">
+                <div class="col_1">
+                    <ul class="nav-bullet mega-div-bottom">
+<li><a href="http://ocw.mit.edu/high-school/">Highlights for High School</a></li>
+                        <li><a href="http://ocw.mit.edu/educator/">OCW Educator</a></li>
+                    </ul>
+<ul class="nav-bullet mega-div-top">
+<li><a href="https://www.edx.org/school/mitx/allcourses?utm_source=OCW&amp;utm_medium=MegaMenu&amp;utm_campaign=OCW">MITx Courses on edX</a></li>
+                        <li><a href="http://teachingexcellence.mit.edu/">Teaching Excellence at MIT</a></li>
+                    </ul>
+</div>
+            </div>            
+        </li>
+    </ul>
+</div>
+<div id="search" role="search" class="grid_4 omega">
+    
+    <form method="get" action="../../../common/search/AdvancedSearch.htm">
+     	 <table class="search"><tbody><tr>
+<td class="black"><input type="text" onblur="fillSearchBox()" onfocus="clearSearchBox()" maxlength="255" value="Search" name="q" class="greytext searchField" id="terms"></td> 			 
+                    <td class="black"><input type="image" src="../../../common/images/button_search.png" name="btnG" class="sub_button"></td>			 
+                    <td class="text2"><a href="../../../common/search/AdvancedSearch.htm">Advanced<br>Search</a></td>
+                </tr></tbody></table>
+</form>
+</div>
+<div class="clear"></div>
+<!-- *end header* -->  
+
+				
+				
+			</div>
+<!-- top grid end -->
+		</div>
+<!-- top end -->
+			
+		<div id="center">
+         <div id="grid">
+		     <div id="left-section">
+                 <div id="breadcrumb">
+                      <p>
+
+    <a href="http://ocw.mit.edu/">Home</a>
+    
+        »
+        
+    
+    
+        
+            <a href="http://ocw.mit.edu/courses">Courses</a>
+            
+                »
+                
+            
+            
+         
+    
+    
+        
+            <a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science">Electrical Engineering and Computer Science</a>
+            
+                »
+                
+            
+            
+         
+    
+    
+        
+            <a href="../../../contents/index.htm">Effective Programming in C and C++</a>
+            
+                »
+                
+            
+            
+         
+    
+    
+        
+            <a href="../../../contents/assignments/index.htm">Assignments</a>
+            
+                »
+                
+            
+            
+         
+    
+    
+        
+            
+            
+            Sample Solution to Assignment 2, Problem 3
+         
+    
+</p>
+
+                 </div>
+                 <div class="clear"></div>
+                 <div id="section_title">
+           			<h1 class="title" itemprop="name" property="dct:title">
+        <span class="" id="parent-fieldname-title">
+            Sample Solution to Assignment 2, Problem 3
+        </span>
+    </h1>
+           	     </div>
+           	     <div class="clear"></div>
+           	     <div id="course_wrapper_section">
+           	     	 <div id="course_nav">
+           			 	
+
+
+
+<script language="javascript" type="text/javascript">
+function toggleMenu(objID) {
+  if (!document.getElementById) return;
+  var ob = document.getElementById(objID);
+  ob.className = (ob.className == 'selected')?'': 'selected';
+}
+function toggleClass(id)
+{
+  var divtoggleClass= document.getElementById(id);
+  divtoggleClass.className = (divtoggleClass.className == 'mO')?'mC': 'mO';
+  return false;
+}
+function changeAlt(id)
+{
+  id.alt = (id.alt == 'Expand Menu')?'Collapse Menu' : 'Expand Menu';
+  id.title = (id.title == 'Expand Menu')?'Collapse Menu' : 'Expand Menu';
+}
+</script><!--Left Nav Starts --><ul>
+<li class="">
+			   			<a href="../../../contents/index.htm">
+		                  Course Home  			                
+	                    </a>
+		        </li>
+		    
+         	
+	
+	
+	    	
+	    	    <li class="">
+			   			<a href="../../../contents/Syllabus/index.htm">
+		                  Syllabus  			                
+	                    </a>
+		        </li>
+		    
+         	
+	
+	
+	    	
+	    	    <li class="">
+			   			<a href="../../../contents/calendar/index.htm">
+		                  Calendar  			                
+	                    </a>
+		        </li>
+		    
+         	
+	
+	
+	    	
+	    	    <li class="">
+			   			<a href="../../../contents/getting-started/index.htm">
+		                  Getting Started  			                
+	                    </a>
+		        </li>
+		    
+         	
+	
+	
+	    	
+	    	    <li class="">
+			   			<a href="../../../contents/lecture-notes/index.htm">
+		                  Lecture Notes  			                
+	                    </a>
+		        </li>
+		    
+         	
+	
+	
+	    	
+	    	    <li class="selected">
+			   			<a href="../../../contents/assignments/index.htm">
+		                  Assignments  			                
+	                    </a>
+		        </li>
+		    
+         	
+	
+	
+	    	
+	    	    <li class="">
+			   			<a href="../../../contents/related-resources/index.htm">
+		                  Related Resources  			                
+	                    </a>
+		        </li>
+		    
+         	
+	
+	
+	    	
+	    	    
+		    
+         	
+	<!--second tal block close-->  
+	
+</ul>
+<!--Left Nav Ends -->
+</div>
+           		     <div id="course_inner_section">
+           		     	 
+	       		     	<p class="sc_nav">« <a href="../../../contents/assignments/index.htm">Back to Assignments</a></p>
+<h3 class="subsubhead">Here are the contents of <strong>rational.h</strong>:</h3>
+<pre><code>
+<span style="color: rgb(153, 153, 153);">#ifndef _6S096_RATIONAL_H</span>
+<span style="color: rgb(153, 153, 153);">#define _6S096_RATIONAL_H</span>
+ 
+<span style="color: rgb(153, 153, 153);">#include &lt;<span style="color: rgb(153, 153, 153);">cstdint</span>&gt;</span>
+<span style="color: rgb(153, 153, 153);">#include &lt;<span style="color: rgb(153, 153, 153);">iosfwd</span>&gt;</span>
+<span style="color: rgb(153, 153, 153);">#include &lt;<span style="color: rgb(153, 153, 153);">stdexcept</span>&gt;</span>
+ 
+<span style="color: rgb(0, 112, 192);">class</span> Rational {
+  intmax_t _num, _den;
+<span style="color: rgb(0, 112, 192);">public</span>:
+  <span style="color: rgb(0, 112, 192);">enum</span> sign_type { POSITIVE, NEGATIVE };
+ 
+  Rational() : _num{0}, _den{1} {}
+  Rational( intmax_t numer ) : _num{numer}, _den{1} {}
+  Rational( intmax_t numer, intmax_t denom ) : _num{numer}, _den{denom} { normalize(); }
+ 
+  <span style="color: rgb(0, 112, 192);">inline</span> intmax_t num() <span style="color: rgb(0, 112, 192);">const</span> { <span style="color: rgb(0, 112, 192);">return</span> _num; }
+  <span style="color: rgb(0, 112, 192);">inline</span> intmax_t den() <span style="color: rgb(0, 112, 192);">const</span> { <span style="color: rgb(0, 112, 192);">return</span> _den; }
+ 
+  <span style="color: rgb(0, 112, 192);">void</span> normalize();
+  <span style="color: rgb(86, 86, 86);">float</span> to_float()<span style="color: rgb(0, 112, 192);">const;</span>
+  <span style="color: rgb(86, 86, 86);">double</span> to_double()<span style="color: rgb(0, 112, 192);">const;</span>
+  sign_type sign() <span style="color: rgb(0, 112, 192);">const;</span>
+  Rational inverse() <span style="color: rgb(0, 112, 192);">const;</span>
+};
+ 
+<span style="color: rgb(255, 0, 102);">std</span>::ostream&amp; operator&lt;&lt;( <span style="color: rgb(255, 0, 102);">std</span>::ostream&amp; os, <span style="color: rgb(0, 112, 192);">const</span> Rational &amp;ratio );
+ 
+<span style="color: rgb(0, 112, 192);">inline</span> <span style="color: rgb(86, 86, 86);">bool</span> operator==( <span style="color: rgb(0, 112, 192);">const</span> Rational &amp;lhs, <span style="color: rgb(0, 112, 192);">const</span> Rational &amp;rhs ) {
+  <span style="color: rgb(0, 112, 192);">return</span> lhs.num() * rhs.den() == rhs.num() * lhs.den();
+}
+ 
+<span style="color: rgb(0, 112, 192);">inline</span> <span style="color: rgb(86, 86, 86);">bool</span> operator&lt;( <span style="color: rgb(0, 112, 192);">const</span> Rational &amp;lhs, <span style="color: rgb(0, 112, 192);">const</span> Rational &amp;rhs ) {
+  <span style="color: rgb(0, 112, 192);">if</span>( lhs.sign() == Rational::POSITIVE &amp;&amp; rhs.sign() == Rational::POSITIVE ) {
+      <span style="color: rgb(0, 112, 192);">return</span> lhs.num() * rhs.den() &lt; rhs.num() * lhs.den();
+  } <span style="color: rgb(0, 112, 192);">else if</span>( lhs.sign() == Rational::NEGATIVE &amp;&amp; rhs.sign() == Rational::NEGATIVE ) {
+    <span style="color: rgb(0, 112, 192);">return</span> lhs.num() * rhs.den() &gt; rhs.num() * lhs.den();
+  } <span style="color: rgb(0, 112, 192);">else</span> {
+    <span style="color: rgb(0, 112, 192);">return</span> lhs.sign() == Rational::NEGATIVE;
+  }
+}
+ 
+<span style="color: rgb(0, 112, 192);">inline</span> Rational operator*( <span style="color: rgb(0, 112, 192);">const</span> Rational &amp;a, <span style="color: rgb(0, 112, 192);">const</span> Rational &amp;b ) {
+  <span style="color: rgb(0, 112, 192);">return</span> Rational{ a.num() * b.num(), a.den() * b.den() };
+}
+ 
+<span style="color: rgb(0, 112, 192);">inline</span> Rational operator+( <span style="color: rgb(0, 112, 192);">const</span> Rational &amp;a, <span style="color: rgb(0, 112, 192);">const</span> Rational &amp;b ) {
+  <span style="color: rgb(0, 112, 192);">return</span> Rational{ a.num() * b.den() + b.num() * a.den(), a.den() * b.den() };
+}
+ 
+<span style="color: rgb(0, 112, 192);">inline</span> Rational operator-( <span style="color: rgb(0, 112, 192);">const</span> Rational &amp;a, <span style="color: rgb(0, 112, 192);">const</span> Rational &amp;b ) {
+  <span style="color: rgb(0, 112, 192);">return</span> Rational{ a.num() * b.den() - b.num() * a.den(), a.den() * b.den() };
+}
+ 
+<span style="color: rgb(0, 112, 192);">inline</span> Rational operator/( <span style="color: rgb(0, 112, 192);">const</span> Rational &amp;a, <span style="color: rgb(0, 112, 192);">const</span> Rational &amp;b ) {
+  <span style="color: rgb(0, 112, 192);">return</span> a * b.inverse();
+}
+ 
+<span style="color: rgb(0, 112, 192);">class</span> bad_rational : <span style="color: rgb(0, 112, 192);">public</span> <span style="color: rgb(255, 0, 102);">std</span>::domain_error {
+<span style="color: rgb(0, 112, 192);">public</span>:
+  <span style="color: rgb(0, 112, 192);">explicit</span> bad_rational() : <span style="color: rgb(255, 0, 102);">std</span>::domain_error(<span style="color: rgb(0, 0, 255);">"Bad rational: zero denominator"</span> ) {}
+};
+ 
+<span style="color: rgb(153, 153, 153);">#endif // _6S096_RATIONAL_H</span>
+</code></pre>
+<p></p>
+<h3 class="subsubhead">Here is the source code file <strong>rational.cpp</strong>:</h3>
+<pre><code>
+<span style="color: rgb(153, 153, 153);">#include "rational.h"</span>
+<span style="color: rgb(153, 153, 153);">#include "gcd.h"</span>
+ 
+<span style="color: rgb(153, 153, 153);">#include &lt;<span style="color: rgb(153, 153, 153);">stdexcept</span>&gt;</span>
+<span style="color: rgb(153, 153, 153);">#include &lt;<span style="color: rgb(153, 153, 153);">ostream</span>&gt;</span>
+<span style="color: rgb(153, 153, 153);">#include &lt;<span style="color: rgb(153, 153, 153);">iostream</span>&gt;</span>
+<span style="color: rgb(153, 153, 153);">#include &lt;<span style="color: rgb(153, 153, 153);">cmath</span>&gt;</span>
+ 
+Rational Rational::inverse() <span style="color: rgb(0, 112, 192);">const</span> {
+  <span style="color: rgb(0, 112, 192);">return</span> Rational{ _den, _num };
+}
+ 
+Rational::sign_type Rational::sign()<span style="color: rgb(0, 112, 192);">const</span> {
+  <span style="color: rgb(0, 112, 192);">return</span> _num &gt;= 0 ? POSITIVE : NEGATIVE;
+}
+ 
+<span style="color: rgb(255, 0, 102);">std</span>::ostream&amp; operator&lt;&lt;( <span style="color: rgb(255, 0, 102);">std</span>::ostream&amp; os, <span style="color: rgb(0, 112, 192);">const</span> Rational &amp;ratio ) {
+  <span style="color: rgb(0, 112, 192);">if</span>( ratio == 0 ) {
+    os &lt;&lt; <span style="color: rgb(0, 0, 255);">"0"</span>;
+  } <span style="color: rgb(0, 112, 192);">else</span> {
+    <span style="color: rgb(0, 112, 192);">if</span>( ratio.sign() == Rational::NEGATIVE ) {
+      os &lt;&lt; <span style="color: rgb(0, 0, 255);">"-"</span>;
+    }
+    os &lt;&lt; <span style="color: rgb(255, 0, 102);">std</span>::<span style="color: rgb(255, 0, 102);">abs</span>( ratio.num() ) &lt;&lt; <span style="color: rgb(0, 0, 255);">"/"</span> &lt;&lt; <span style="color: rgb(255, 0, 102);">std</span>::<span style="color: rgb(255, 0, 102);">abs</span>( ratio.den() );
+  }
+  <span style="color: rgb(0, 112, 192);">return</span> os;
+}
+ 
+<span style="color: rgb(0, 112, 192);">void</span> Rational::normalize() {
+  <span style="color: rgb(0, 112, 192);">if</span>( _den == 0 ) {
+    <span style="color: rgb(0, 112, 192);">throw</span> bad_rational();
+  }
+ 
+  <span style="color: rgb(0, 112, 192);">if</span>( _num == 0 ) {
+    _den = 1; <span style="color: rgb(0, 112, 192);">return</span>;
+  }
+ 
+  <span style="color: rgb(86, 86, 86);">auto</span> g = gcd( <span style="color: rgb(255, 0, 102);">std</span>::<span style="color: rgb(255, 0, 102);">abs</span>( _num ), <span style="color: rgb(255, 0, 102);">std</span>::<span style="color: rgb(255, 0, 102);">abs</span>( _den ) );
+  _num /= g; _den /= g;
+ 
+  <span style="color: rgb(0, 112, 192);">if</span>( _den &lt; 0 ) {
+    _num = -_num;
+    _den = -_den;
+  }
+}
+ 
+<span style="color: rgb(86, 86, 86);">float</span> Rational::to_float() <span style="color: rgb(0, 112, 192);">const</span> {
+  <span style="color: rgb(0, 112, 192);">return static_cast</span>&lt;<span style="color: rgb(86, 86, 86);">float</span>&gt;( _num ) / <span style="color: rgb(0, 112, 192);">static_cast</span>&lt;<span style="color: rgb(86, 86, 86);">float</span>&gt;( _den );
+}
+ 
+<span style="color: rgb(86, 86, 86);">double</span> Rational::to_double()<span style="color: rgb(0, 112, 192);">const</span> {
+  <span style="color: rgb(0, 112, 192);">return static_cast</span>&lt;<span style="color: rgb(86, 86, 86);">double</span>&gt;( _num ) / <span style="color: rgb(0, 112, 192);">static_cast</span>&lt;<span style="color: rgb(86, 86, 86);">double</span>&gt;( _den );
+}
+</code></pre>
+<p></p>
+<h3 class="subsubhead">Below is the output using the test data:</h3>
+<pre><code>
+<strong>rational:</strong>
+ 1: OK [0.007 seconds] OK! add
+ 2: OK [0.006 seconds] OK! mult
+ 3: OK [0.009 seconds] OK! add1024
+ 4: OK [0.014 seconds] OK! add1024
+ 5: OK [0.158 seconds] OK! add32768
+ 6: OK [0.007 seconds] OK! op&lt;&lt;
+ 7: OK [0.289 seconds] OK! div65536 in 0.280000 s
+ 8: OK [0.006 seconds] OK! phi, 0.000000e+00
+ 9: OK [0.006 seconds] OK! (Bad rational: zero denominator)
+10: OK [0.006 seconds] OK! xyz
+11: OK [0.007 seconds] OK! pow2
+12: OK [0.006 seconds] OK! x1z
+</code></pre>
+<p class="sc_nav_bottom">« <a href="../../../contents/assignments/index.htm">Back to Assignments</a></p>
+	                    
+	        			
+	                    
+	                    
+	                    	
+	                       
+	                    
+            		 </div>
+<!--Course_inner_section tag close -->
+           		     <div class="clear"></div>
+ 				 </div>
+<!--Course_wrapper tag close -->             
+ 			 </div>
+<!--left tag close -->
+ 			                
+         </div>
+<!--grid tag close --> 
+      </div>
+		
+		<div id="bottom">
+			<div id="grid">
+				
+<div id="portletwrapper-6f63772e626f74746f6d706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a736974652d666f6f746572" class="portletWrapper kssattr-portlethash-6f63772e626f74746f6d706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a736974652d666f6f746572">
+<div class="portletStaticText portlet-static-site-footer"><div id="bottom">
+<div id="grid">
+<!-- *begin footer* -->
+<div id="footer" role="navigation sitemap">
+<div id="foot-c1" class="grid_2 alpha">
+<h4 class="footer">Courses</h4>
+<ul class="foot-bullet">
+<li><a href="http://ocw.mit.edu/courses/find-by-topic/">Find by Topic</a></li>
+    <li><a href="http://ocw.mit.edu/courses/find-by-number/">Find by Course Number</a></li>
+    <li><a href="http://ocw.mit.edu/courses/find-by-department/">Find by Department</a></li>
+    <li><a href="http://ocw.mit.edu/courses/audio-video-courses/">Audio/Video Courses</a></li>
+    <li><a href="http://ocw.mit.edu/courses/online-textbooks/">Online Textbooks</a></li>
+    <li><a href="http://ocw.mit.edu/courses/new-courses/">New Courses</a></li>
+    <li><a href="http://ocw.mit.edu/courses/most-visited-courses/">Most Visited Courses</a></li>
+    <li><a href="http://ocw.mit.edu/courses/ocw-scholar/">OCW Scholar Courses</a></li>
+    <li><a href="http://ocw.mit.edu/courses/this-course-at-mit/">This Course at MIT</a></li>
+    <li><a href="http://ocw.mit.edu/resources/">Supplemental Resources</a></li>
+    <li><a href="http://ocw.mit.edu/courses/translated-courses/">Translated Courses</a></li>
+</ul>
+</div>
+<div id="foot-c2" class="grid_2">
+<h4 class="footer">About</h4>
+<ul class="foot-bullet">
+<li><a href="http://ocw.mit.edu/about/">About OpenCourseWare</a></li>
+    <li><a href="http://ocw.mit.edu/about/site-statistics/">Site Stats</a></li>
+    <li><a href="http://ocw.mit.edu/about/ocw-stories/">OCW Stories</a></li>
+    <li><a href="http://ocw.mit.edu/about/ocw-consortium/">OCW Consortium</a></li>
+    <li><a href="http://ocw.mit.edu/about/media-coverage/">Media Coverage</a></li>
+    <li><a href="http://ocw.mit.edu/about/newsletter/">Newsletter</a></li>
+    <li><a href="http://ocw.mit.edu/about/media-coverage/press-releases/">Press Releases</a></li>
+    <li><a href="http://ocw.mit.edu/about/next-decade/">OCW's Next Decade</a></li>
+</ul>
+</div>
+<div id="foot-c3" class="grid_2">
+<h4 class="footer">Donate</h4>
+<ul class="foot-bullet">
+<li><a href="http://ocw.mit.edu/donate">Make a Donation</a></li>
+    <li><a href="http://ocw.mit.edu/donate/why-donate/">Why Donate?</a></li>
+    <li><a href="http://ocw.mit.edu/donate/ocw-course-champions-program/">Become a Course Champion</a></li>
+    <li><a href="http://ocw.mit.edu/donate/our-supporters/">Our Supporters</a></li>
+    <li><a href="http://ocw.mit.edu/donate/other-ways-to-contribute/">Other Ways to Contribute</a></li>
+    <li><a href="http://ocw.mit.edu/donate/shop-ocw/">Shop OCW</a></li>
+    <li><a href="http://ocw.mit.edu/support/">Become a Corporate Sponsor</a></li>
+</ul>
+</div>
+<div id="foot-c4" class="grid_2">
+<h4 class="footer">Featured Sites</h4>
+<ul class="foot-bullet">
+<li><a href="http://ocw.mit.edu/high-school/">Highlights for High School</a></li>
+    <li><a href="http://ocw.mit.edu/educator/">OCW Educator</a></li>
+    <li><a href="https://www.edx.org/school/mitx/allcourses?utm_source=OCW&amp;utm_medium=MegaMenu&amp;utm_campaign=OCW">MITx Courses on edX</a></li>
+    <li><a href="http://teachingexcellence.mit.edu/">Teaching Excellence at MIT</a></li>
+</ul>
+<h4 class="footer" style="margin-top: 14px;">Tools</h4>
+<ul class="foot-bullet">
+<li><a href="http://ocw.mit.edu/help/">Help &amp; FAQs</a></li>
+    <li><a href="../../../common/jsp/feedback.htm">Contact Us</a></li>
+    <li><a href="../../../common/search/AdvancedSearch.htm">Advanced Search</a></li>
+    <li><a href="http://ocw.mit.edu/help/site-map/">Site Map</a></li>
+    <li><a href="../../../common/terms/index.htm">Privacy &amp; Terms of Use</a></li>
+    <li><a href="http://ocw.mit.edu/help/rss/">RSS Feeds</a></li>
+</ul>
+</div>
+<div id="foot-c5" class="grid_4 omega" itemprop="publisher" itemscope="" itemtype="http://schema.org/CollegeOrUniversity">
+<h4 class="footer">About <span itemprop="name">MIT OpenCourseWare</span>
+</h4>
+<p class="accent" itemprop="description">MIT OpenCourseWare makes the materials used in the teaching of almost all of MIT's subjects available on the Web, free of charge. With more than 2,200 courses available, OCW is delivering on the promise of open sharing of knowledge.</p>
+</div>
+<div id="foot-copy" class="grid_8 alpha">
+<a href="http://web.mit.edu"><img src="../../../common/images/logo_mit.png" alt="Massachusetts Institute of Technology logo and name." style="width: 195; height: 44;"></a>                 <a href="http://www.oeconsortium.org/"><img src="http://ocw.mit.edu/images/logo_oec.png" alt="Open Education Consortium logo." style="width: 219px; height: 59px; vertical-align: top;"></a>                 <a rel="license" itemprop="useRightsUrl" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/deed.en_US"><img src="../../../common/images/cc_by-nc-sa.png" alt="Creative Commons logo with terms BY-NC-SA." style="width: 126px; height: 44px; margin-right: 0;"></a>
+<p class="copyright">© 2001–2014<br>
+Massachusetts Institute of Technology</p>
+<p style="font-size: 0.9em; margin-bottom: 15px;">Your use of the MIT OpenCourseWare site and materials is subject to our <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/deed.en_US" rel="license">Creative Commons License</a> and other <a href="../../../common/terms/index.htm" rel="cc:morePermissions">terms of use</a>.</p>
+</div>
+<div id="foot-support" class="grid_4 omega">
+<h4 class="footer">Our Corporate Supporters</h4>
+<!-- HOME_CORP_LOGO_1 -->
+<div id="div-gpt-ad-1388181177156-0" class="sponsors_google_ads_even"><script type="text/javascript">
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-0'); });
+</script></div>
+<!-- HOME_CORP_LOGO_2 -->
+<div id="div-gpt-ad-1388181177156-1" class="sponsors_google_ads_odd"><script type="text/javascript">
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-1'); });
+</script></div>
+<!-- HOME_CORP_LOGO_3 -->
+<div id="div-gpt-ad-1388181177156-2" class="sponsors_google_ads_even"><script type="text/javascript">
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-2'); });
+</script></div>
+<!-- HOME_CORP_LOGO_4 -->
+<div id="div-gpt-ad-1388181177156-3" class="sponsors_google_ads_odd"><script type="text/javascript">
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-3'); });
+</script></div>
+<!-- HOME_CORP_LOGO_5 -->
+<div id="div-gpt-ad-1388181177156-4" class="sponsors_google_ads_even"><script type="text/javascript">
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-4'); });
+</script></div>
+<!-- HOME_CORP_LOGO_6 -->
+<div id="div-gpt-ad-1388181177156-5" class="sponsors_google_ads_odd"><script type="text/javascript">
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-5'); });
+</script></div>
+</div>
+</div>
+</div>
+</div></div>
+
+</div>
+
+
+
+
+
+                
+			</div> <!-- bottom grid end -->
+		</div>
+<!-- bottom end -->
+		
+		
+   </body>
+</html>
