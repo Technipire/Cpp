@@ -24,6 +24,7 @@ class Quote {
         double price = 5.0;
 };
 
+
 class Bulk_quote : public Quote {
     public:
         Bulk_quote() = default;

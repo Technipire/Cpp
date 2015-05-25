@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/xian/Desktop/cpp/image/OpenCV/opencv-2.4.9/apps/haartraining/createsamples.cpp
+cstdio
+-
+cstring
+-
+cstdlib
+-
+cmath
+-
+ctime
+-
+cvhaartraining.h
+/home/xian/Desktop/cpp/image/OpenCV/opencv-2.4.9/apps/haartraining/cvhaartraining.h
+
+/home/xian/Desktop/cpp/image/OpenCV/opencv-2.4.9/apps/haartraining/cvhaartraining.h
+
