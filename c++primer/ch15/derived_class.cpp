@@ -18,6 +18,7 @@ class Quote {
             cout << "price: " << price << endl;
         }
         virtual void print() const { cout << "This is Quote." << endl; }
+        virtual void foo() const {cout << "foo" << endl;}
     private:
         string bookNo = "987";
     protected:
@@ -103,6 +104,11 @@ void print_total(ostream &os, const Quote &item, size_t n){
 void display_debug(const Quote &item){
     item.debug();
 }
+class bar : public Bulk_quote {
+    public:
+        bar() = default;
+        virtual void foo() const {cout << "foo in bar" << endl;}
+};
 int main(){
     Quote item;
     Bulk_quote bulk;
@@ -119,6 +125,10 @@ int main(){
     display_debug(*p);
     display_debug(*lp);
     cout << endl;
+    bar b;
+    b.foo();
+    item.net_price(100);
+    /*
     //Exercise 15.14
     Quote bobj;
     Bulk_quote dobj;
@@ -134,5 +144,6 @@ int main(){
     br1.print();// runtime
     br2.print();// runtime
     Quote &r = bulk;
+    */
     return 0;
 }
