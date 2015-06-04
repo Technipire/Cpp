@@ -19,6 +19,7 @@ class Quote {
         }
         virtual void print() const { cout << "This is Quote." << endl; }
         virtual void foo() const {cout << "foo" << endl;}
+        virtual ~Quote() = default;
     private:
         string bookNo = "987";
     protected:
@@ -35,6 +36,7 @@ class Bulk_quote : public Quote {
         double get_discount() { return discount; }
         void debug () const override;
         void print() const override;
+        ~Bulk_quote() = default;
     private:
         size_t min_qty = 0;
         double discount = 0.3;
@@ -128,6 +130,7 @@ int main(){
     bar b;
     b.foo();
     item.net_price(100);
+    delete lp;
     /*
     //Exercise 15.14
     Quote bobj;
