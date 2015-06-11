@@ -42,7 +42,7 @@ int main()
       char outputFilename[256];
       strncpy(outputFilename, fn.c_str(),sizeof(outputFilename));
       outputFilename[sizeof(outputFilename) - 1] = 0;
-      thread t {&MeanImageConvolutionFilter::DoFiltering, filter, input, output};
+      thread t {&MeanImageConvolutionFilter::DoFiltering, filter, input, output}; // we could also use parentheses here after t
       t.join();
       output->WriteFile(outputFilename);
       
@@ -50,4 +50,6 @@ int main()
   delete input;
   delete output;
   delete filter;
+  return 0;
+  return 0;
 }

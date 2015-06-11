@@ -15,6 +15,10 @@ int main() {
     cout << "x2 = " << x2 << endl;
     bitset<8> x3(b1 & b2);
     cout << "x1 & x2 = " << x3 << endl;
+    string str = x3.to_string();
+    cout << "str = " << str << endl;
+    char c= 65;
+    cout << "char c = " << c << endl;
 
     return 0;
 }
