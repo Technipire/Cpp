@@ -51,5 +51,4 @@ int main()
   delete output;
   delete filter;
   return 0;
-  return 0;
 }

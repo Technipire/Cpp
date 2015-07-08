@@ -36,7 +36,7 @@ int main()
       delete filter;
       return 1;
   }
-  ((ImageConvolutionFilter*)filter)->SetConvolutionWindow(laplacianWindow);// coment out this line for p2
+  ((ImageConvolutionFilter*)filter)->SetConvolutionWindow(laplacianWindow);// comment out this line for goal 2
   ImageBase* output = filter->DoFiltering(input);
   if (!output->WriteFile(outputFilename))
   {
@@ -49,4 +49,6 @@ int main()
   delete input;
   delete output;
   delete filter;
+
+  return 0;
 }
