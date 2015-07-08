@@ -7,4 +7,3 @@
 3. Implement (2) in multi-threading 
 
 
-4. Add modifications to the whole program. You can add functions, re-arrange the classes, and anything to make the codes better. Use your creativity and everything you know about C++. You are free to use external libraries too.
