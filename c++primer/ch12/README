@@ -1,0 +1,4 @@
+This program is a simple text-query program. It will allow a user to search a given file for words that may appear in the text.
+
+The result of one query will be the number of times the word occurs and a list of lines in which the word appears in the text.
+If a word occur more than once on the same line, only one line will be displayed.
