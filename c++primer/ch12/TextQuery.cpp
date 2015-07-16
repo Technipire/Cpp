@@ -32,7 +32,7 @@ TextQuery::TextQuery(std::ifstream& infile) {
 
 void TextQuery::printText() {
     for (auto line : text) {
-        std::cout << "new line: " << line << std::endl;
+        std::cout << line << std::endl;
     }
 }
 
