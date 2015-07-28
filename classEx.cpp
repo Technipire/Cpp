@@ -8,13 +8,19 @@ public:
   {
     x = nx;
     y = ny;
+    doubleXY();
+    cout << "in constructor" << endl;
+    cout << x << " " << y << endl;
   }
   Point(Point &o)
   {
     x = o.x;
     y = o.y;
   }
-  
+  void doubleXY() {
+      x = 2 * x;
+      y = 2 * y;
+  } 
  
 };
 
