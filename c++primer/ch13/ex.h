@@ -12,6 +12,9 @@ class HasPtr {
             std::cout << "ps-> " << *ps << std::endl;
             std::cout << "i =  " << i << std::endl;
         }
+        int get_i() {
+            return i;
+        }
         ~HasPtr() {
             delete ps;
         }
@@ -20,16 +23,4 @@ class HasPtr {
         int i;
 };
 
-int main() {
-    std::cout << "Enter a string: " << std::endl;
-    std::string input = "";
-    std::cin >> input;
-    HasPtr* bar = new HasPtr(input);
-    HasPtr* foo = new HasPtr("world");
-    bar->print_info();
-    bar = foo;
-    bar->print_info();
-    delete bar;
-    delete foo;
-    return 0;
-}
+
