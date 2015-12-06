@@ -1,0 +1,35 @@
+// handler.cpp
+
+class customer_requests_discount_event;
+#include "handler.h"
+
+handler::handler(handler * a_successor)
+{
+	set_successor(a_successor);
+}
+
+void handler::handle(customer_requests_discount_event * a_customer_requests_discount_event)
+{
+	if (can_handle(a_customer_requests_discount_event))
+	{
+		do_handle(a_customer_requests_discount_event);
+	}
+	else if (get_successor() != nullptr)
+	{
+		get_successor()->handle(a_customer_requests_discount_event);
+	}
+	else
+	{
+		// a_customer_requests_discount_event is not handled.
+	}
+}
+
+void handler::set_successor(handler * a_successor)
+{
+	my_successor = a_successor;
+}
+
+handler * handler::get_successor() const
+{
+	return my_successor;
+}

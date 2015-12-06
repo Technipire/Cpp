@@ -1,0 +1,9 @@
+multiple journey to Today's itinerary:
+multiple journey to Work:
+single journey to Apple Computer.
+multiple journey to Food shopping:
+single journey to Whole Foods.
+single journey to Stop & Shop.
+multiple journey to Pet shopping:
+single journey to Petco.
+single journey to Stop & Shop.

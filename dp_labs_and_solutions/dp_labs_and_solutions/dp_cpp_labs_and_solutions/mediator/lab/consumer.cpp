@@ -1,0 +1,54 @@
+// consumer.cpp
+
+#include <iostream>
+#include "consumer.h"
+#include "dp_const_iterator.h"
+#include "producer.h"
+
+consumer::consumer(const std::string & a_name)
+{
+	my_name = a_name;
+}
+
+void consumer::add_producer(producer * a_producer)
+{
+	if (a_producer == nullptr)
+	{
+		throw dp_exception("void consumer::add_producer(producer * a_producer) -- a_producer == nullptr.");
+	}
+
+	my_producers.add(a_producer);
+}
+
+producer * consumer::choose_producer() const
+{
+	producer * a_lowest_bid_producer(nullptr);
+	int a_lowest_bid(0);
+
+	dp_const_iterator<producer *> * a_iterator = my_producers.make_iterator();
+	while (!a_iterator->is_done())
+	{
+		producer * a_producer = a_iterator->get_current();
+		int a_bid = a_producer->get_bid();
+		if (a_lowest_bid == 0 || a_bid < a_lowest_bid)
+		{
+			a_lowest_bid = a_bid;
+			a_lowest_bid_producer = a_producer;
+		}
+		a_iterator->advance();
+	}
+
+	return a_lowest_bid_producer;
+}
+
+void consumer::consume()
+{
+	producer * a_producer = choose_producer();
+	if (a_producer == nullptr)
+	{
+		throw dp_exception("void consumer::consume() -- a_producer == nullptr.");
+	}
+	
+	a_producer->produce();
+	std::cout << my_name << " consumes." << std::endl;
+}

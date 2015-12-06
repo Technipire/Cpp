@@ -1,0 +1,25 @@
+In the square class, there are two operations:
+
+	left_click(a_game : game)
+	uncover()
+
+They appear to be similar.
+
+What are the differences?
+
+1) who calls the operation?
+
+	left_click() results from a user input.
+
+	uncover() comes from the game.
+	uncover() is called only by uncover_all_squares().
+	uncover_all_squares() is called only when:
+		1) you uncover a mine;
+		2) you lose the game;
+		3) you win the game.
+
+2) what happens in state 2 (covered with flag)?
+
+	left_click() has no effect.
+
+	uncover() causes a state transition.

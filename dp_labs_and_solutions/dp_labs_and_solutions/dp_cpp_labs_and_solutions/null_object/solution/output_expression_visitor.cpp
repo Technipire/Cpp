@@ -1,0 +1,132 @@
+// output_expression_visitor.cpp
+
+#include <iostream>
+#include <string>
+#include "binary_minus.h"
+#include "binary_plus.h"
+#include "conditional.h"
+#include "divide.h"
+#include "dp_iterator.h"
+#include "expression_visitor.h"
+#include "literal.h"
+#include "method_invocation.h"
+#include "multiply.h"
+#include "null_expression.h"
+#include "output_expression_visitor.h"
+#include "unary_minus.h"
+#include "unary_plus.h"
+#include "variable.h"
+
+output_expression_visitor::output_expression_visitor(std::ostream & a_stream)
+: my_stream(a_stream)
+{
+}
+
+void output_expression_visitor::visit(binary_minus & a_binary_minus)
+{
+	output_infix(a_binary_minus, "-");
+}
+
+void output_expression_visitor::visit(binary_plus & a_binary_plus)
+{
+	output_infix(a_binary_plus, "+");
+}
+
+void output_expression_visitor::visit(conditional & a_conditional)
+{
+	output_infix(a_conditional, "?", ":");
+}
+
+void output_expression_visitor::visit(divide & a_divide)
+{
+	output_infix(a_divide, "/");
+}
+
+void output_expression_visitor::visit(literal & a_literal)
+{
+	my_stream << a_literal.get_value();
+}
+
+void output_expression_visitor::visit(method_invocation & a_method_invocation)
+{
+	my_stream << a_method_invocation.get_name();
+	my_stream << "(";
+	bool is_first = true;
+	dp_iterator<expression *> * a_iterator = a_method_invocation.get_operands();
+	while (!a_iterator->is_done())
+	{
+		if (is_first)
+		{
+			is_first = false;
+		}
+		else
+		{
+			my_stream << ",";
+		}
+		expression * a_operand1 = a_iterator->get_current();
+		a_operand1->accept(*this);
+		a_iterator->advance();
+	}
+	my_stream << ")";
+}
+
+void output_expression_visitor::visit(multiply & a_multiply)
+{
+	output_infix(a_multiply, "*");
+}
+
+void output_expression_visitor::visit(null_expression & a_null_expression)
+{
+	my_stream << "nullptr";
+}
+
+void output_expression_visitor::visit(unary_minus & a_unary_minus)
+{
+	output_prefix(a_unary_minus, "-");
+}
+
+void output_expression_visitor::visit(unary_plus & a_unary_plus)
+{
+	output_prefix(a_unary_plus, "+");
+}
+
+void output_expression_visitor::visit(variable & a_variable)
+{
+	my_stream << a_variable.get_name();
+}
+
+void output_expression_visitor::output_prefix(const unary & a_unary, const std::string & a_operator)
+{
+	my_stream << "(";
+	my_stream << a_operator;
+	a_unary.get_operand1()->accept(*this);
+	my_stream << ")";
+}
+
+void output_expression_visitor::output_postfix(const unary & a_unary, const std::string & a_operator)
+{
+	my_stream << "(";
+	a_unary.get_operand1()->accept(*this);
+	my_stream << a_operator;
+	my_stream << ")";
+}
+
+void output_expression_visitor::output_infix(const binary & a_binary, const std::string & a_operator)
+{
+	my_stream << "(";
+	a_binary.get_operand1()->accept(*this);
+	my_stream << a_operator;
+	a_binary.get_operand2()->accept(*this);
+	my_stream << ")";
+}
+
+void output_expression_visitor::output_infix(const ternary & a_ternary, const std::string & a_operator1, const std::string & a_operator2)
+{
+	my_stream << "(";
+	a_ternary.get_operand1()->accept(*this);
+	my_stream << a_operator1;
+	a_ternary.get_operand2()->accept(*this);
+	my_stream << a_operator2;
+	a_ternary.get_operand3()->accept(*this);
+	my_stream << ")";
+}

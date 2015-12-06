@@ -1,0 +1,59 @@
+// use_class.cpp
+
+#include <iostream>
+#include "dp_exception.h"
+#include "dp_map.h"
+#include "expression.h"
+#include "get_number_of_uses_of_variable_expression_visitor.h"
+#include "get_value_expression_visitor.h"
+#include "output_expression_visitor.h"
+#include "use_class.h"
+
+void use_class::use(expression * a_expression)
+{
+	if (a_expression == nullptr)
+	{
+		throw dp_exception("void use_class::use(expression * a_expression) -- a_expression == nullptr.");
+	}
+	output_expression_visitor * a_output_expression_visitor = new output_expression_visitor(std::cout);
+	a_expression->accept(*a_output_expression_visitor);
+	std::cout << std::endl;
+
+	if (a_expression == nullptr)
+	{
+		throw dp_exception("void use_class::use(expression * a_expression) -- a_expression == nullptr.");
+	}
+	get_number_of_uses_of_variable_expression_visitor * a_get_number_of_uses_of_variable_expression_visitor_a = new get_number_of_uses_of_variable_expression_visitor("a");
+	a_expression->accept(*a_get_number_of_uses_of_variable_expression_visitor_a);
+	std::cout << a_get_number_of_uses_of_variable_expression_visitor_a->get_number_of_uses_of_variable() << std::endl;
+
+	if (a_expression == nullptr)
+	{
+		throw dp_exception("void use_class::use(expression * a_expression) -- a_expression == nullptr.");
+	}
+	get_number_of_uses_of_variable_expression_visitor * a_get_number_of_uses_of_variable_expression_visitor_b = new get_number_of_uses_of_variable_expression_visitor("b");
+	a_expression->accept(*a_get_number_of_uses_of_variable_expression_visitor_b);
+	std::cout << a_get_number_of_uses_of_variable_expression_visitor_b->get_number_of_uses_of_variable() << std::endl;
+
+	if (a_expression == nullptr)
+	{
+		throw dp_exception("void use_class::use(expression * a_expression) -- a_expression == nullptr.");
+	}
+	get_number_of_uses_of_variable_expression_visitor * a_get_number_of_uses_of_variable_expression_visitor_c = new get_number_of_uses_of_variable_expression_visitor("c");
+	a_expression->accept(*a_get_number_of_uses_of_variable_expression_visitor_c);
+	std::cout << a_get_number_of_uses_of_variable_expression_visitor_c->get_number_of_uses_of_variable() << std::endl;
+
+	dp_map<std::string, double> * a_map = new dp_map<std::string, double>();
+
+	a_map->put("a",  3.0);
+	a_map->put("b", 10.0);
+	a_map->put("c",  7.0);
+
+	if (a_expression == nullptr)
+	{
+		throw dp_exception("void use_class::use(expression * a_expression) -- a_expression == nullptr.");
+	}
+	get_value_expression_visitor * a_get_value_expression_visitor = new get_value_expression_visitor(*a_map);
+	a_expression->accept(*a_get_value_expression_visitor);
+	std::cout << a_get_value_expression_visitor->get_value() << std::endl;
+}

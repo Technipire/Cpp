@@ -1,0 +1,16 @@
+coffee with milk with sugar:
+Brewing coffee.
+Adding milk.
+Adding sugar.
+
+coffee with milk:
+Brewing coffee.
+Adding milk.
+
+coffee with sugar:
+Brewing coffee.
+Adding sugar.
+
+coffee:
+Brewing coffee.
+

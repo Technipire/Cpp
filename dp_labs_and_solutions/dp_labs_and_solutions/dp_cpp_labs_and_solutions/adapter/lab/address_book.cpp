@@ -1,0 +1,56 @@
+// address_book.cpp
+
+#include "address_book.h"
+#include "dp_iterator.h"
+#include "dp_list.h"
+class person;
+
+address_book::address_book()
+{
+}
+
+void address_book::add(person * a_person)
+{
+	if (a_person == nullptr)
+	{
+		// throw an exception.
+	}
+
+	my_persons.add(a_person);
+}
+
+int address_book::get_number_of_persons() const
+{
+	return my_persons.get_size();
+}
+
+void address_book::remove(person * a_person)
+{
+	// I was too lazy to implement this. :-(
+}
+
+dp_const_iterator<person *> * address_book::make_iterator() const
+{
+	return my_persons.make_iterator();
+}
+
+dp_iterator<person *> * address_book::make_iterator()
+{
+	return my_persons.make_iterator();
+}
+
+person * address_book::get_person(int which) const
+{
+	dp_const_iterator<person *> * a_iterator = make_iterator();
+	int a_counter(0);
+	while (!a_iterator->is_done())
+	{
+		if (a_counter == which)
+		{
+			return a_iterator->get_current();
+		}
+		a_iterator->advance();
+		++a_counter;
+	}
+	return nullptr;
+}

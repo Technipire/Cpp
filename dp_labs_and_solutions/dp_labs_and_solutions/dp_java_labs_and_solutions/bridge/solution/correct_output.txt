@@ -1,0 +1,28 @@
+height == 3
+width  == 4
+is_square == false
+
+height == 4
+width  == 4
+is_square == true
+
+height == 3
+width  == 3
+is_square == true
+
+height == 2
+width  == 2
+is_square == true
+
+height == 2
+width  == 2
+is_square == true
+
+height == 3
+width  == 2
+is_square == false
+
+height == 2
+width  == 3
+is_square == false
+

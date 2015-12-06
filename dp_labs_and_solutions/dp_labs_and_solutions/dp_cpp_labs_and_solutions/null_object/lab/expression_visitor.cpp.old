@@ -1,0 +1,131 @@
+// expression_visitor.cpp
+
+#include "binary_minus.h"
+#include "binary_plus.h"
+#include "conditional.h"
+#include "divide.h"
+#include "dp_exception.h"
+#include "dp_iterator.h"
+#include "expression_visitor.h"
+#include "literal.h"
+#include "method_invocation.h"
+#include "multiply.h"
+#include "unary_minus.h"
+#include "unary_plus.h"
+#include "variable.h"
+
+void expression_visitor::visit(binary_minus & a_binary_minus)
+{
+	if (a_binary_minus.get_operand1() == NULL)
+	{
+		throw dp_exception("void expression_visitor::visit(binary_minus & a_binary_minus) -- a_binary_minus.get_operand1() == NULL.");
+	}
+	a_binary_minus.get_operand1()->accept(*this);
+	if (a_binary_minus.get_operand2() == NULL)
+	{
+		throw dp_exception("void expression_visitor::visit(binary_minus & a_binary_minus) -- a_binary_minus.get_operand2() == NULL.");
+	}
+	a_binary_minus.get_operand2()->accept(*this);
+}
+
+void expression_visitor::visit(binary_plus & a_binary_plus)
+{
+	if (a_binary_plus.get_operand1() == NULL)
+	{
+		throw dp_exception("void expression_visitor::visit(binary_plus & a_binary_plus) -- a_binary_plus.get_operand1() == NULL.");
+	}
+	a_binary_plus.get_operand1()->accept(*this);
+	if (a_binary_plus.get_operand2() == NULL)
+	{
+		throw dp_exception("void expression_visitor::visit(binary_plus & a_binary_plus) -- a_binary_plus.get_operand2() == NULL.");
+	}
+	a_binary_plus.get_operand2()->accept(*this);
+}
+
+void expression_visitor::visit(conditional & a_conditional)
+{
+	if (a_conditional.get_operand1() == NULL)
+	{
+		throw dp_exception("void expression_visitor::visit(conditional & a_conditional) -- a_conditional.get_operand1() == NULL.");
+	}
+	a_conditional.get_operand1()->accept(*this);
+	if (a_conditional.get_operand2() == NULL)
+	{
+		throw dp_exception("void expression_visitor::visit(conditional & a_conditional) -- a_conditional.get_operand2() == NULL.");
+	}
+	a_conditional.get_operand2()->accept(*this);
+	if (a_conditional.get_operand3() == NULL)
+	{
+		throw dp_exception("void expression_visitor::visit(conditional & a_conditional) -- a_conditional.get_operand3() == NULL.");
+	}
+	a_conditional.get_operand3()->accept(*this);
+}
+
+void expression_visitor::visit(divide & a_divide)
+{
+	if (a_divide.get_operand1() == NULL)
+	{
+		throw dp_exception("void expression_visitor::visit(divide & a_divide) -- a_divide.get_operand1() == NULL.");
+	}
+	a_divide.get_operand1()->accept(*this);
+	if (a_divide.get_operand2() == NULL)
+	{
+		throw dp_exception("void expression_visitor::visit(divide & a_divide) -- a_divide.get_operand2() == NULL.");
+	}
+	a_divide.get_operand2()->accept(*this);
+}
+
+void expression_visitor::visit(literal & a_literal)
+{
+}
+
+void expression_visitor::visit(method_invocation & a_method_invocation)
+{
+	dp_iterator<expression *> * a_iterator = a_method_invocation.get_operands();
+	while (!a_iterator->is_done())
+	{
+		expression * a_operand = a_iterator->get_current();
+		if (a_operand == NULL)
+		{
+			throw dp_exception("void expression_visitor::visit(method_invocation & a_method_invocation) -- a_operand == NULL.");
+		}
+		a_operand->accept(*this);
+		a_iterator->advance();
+	}
+}
+
+void expression_visitor::visit(multiply & a_multiply)
+{
+	if (a_multiply.get_operand1() == NULL)
+	{
+		throw dp_exception("void expression_visitor::visit(multiply & a_multiply) -- a_multiply.get_operand1() == NULL.");
+	}
+	a_multiply.get_operand1()->accept(*this);
+	if (a_multiply.get_operand2() == NULL)
+	{
+		throw dp_exception("void expression_visitor::visit(multiply & a_multiply) -- a_multiply.get_operand2() == NULL.");
+	}
+	a_multiply.get_operand2()->accept(*this);
+}
+
+void expression_visitor::visit(unary_minus & a_unary_minus)
+{
+	if (a_unary_minus.get_operand1() == NULL)
+	{
+		throw dp_exception("void expression_visitor::visit(unary_minus & a_unary_minus) -- a_unary_minus.get_operand1() == NULL.");
+	}
+	a_unary_minus.get_operand1()->accept(*this);
+}
+
+void expression_visitor::visit(unary_plus & a_unary_plus)
+{
+	if (a_unary_plus.get_operand1() == NULL)
+	{
+		throw dp_exception("void expression_visitor::visit(unary_plus & a_unary_plus) -- a_unary_plus.get_operand1() == NULL.");
+	}
+	a_unary_plus.get_operand1()->accept(*this);
+}
+
+void expression_visitor::visit(variable & a_variable)
+{
+}
