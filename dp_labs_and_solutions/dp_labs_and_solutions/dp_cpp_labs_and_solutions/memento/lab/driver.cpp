@@ -5,6 +5,7 @@
 #include "dp_exception.h"
 #include "driver.h"
 
+
 driver::driver(const std::string & a_name)
 {
 	set_name(a_name);
@@ -12,7 +13,6 @@ driver::driver(const std::string & a_name)
 	set_y(0);
 	set_heading(NORTH);
 }
-
 
 void driver::turn_left()
 {
@@ -121,16 +121,62 @@ std::string driver::get_heading_as_string() const
 	return result;
 }
 
-memento_interface* driver::backup()
-{
-	return new memento_implementation(this)
+driver::memento_interface::memento_interface()
+{ 
 }
 
-void driver::restore(memento_interface* a_memento)
+driver::memento_interface::~memento_interface()
 {
-	if (!a_memento) return;
-	else 
-	{
-		this = a_memento
-	}
 }
+driver::memento_implementation::memento_implementation(const driver& a_originator)
+{
+    if (&a_originator == nullptr)
+    {
+        throw dp_exception("a_originator is null!");
+    }
+    my_originator = &a_originator;
+    my_clone = a_originator.clone();
+}
+/*
+driver::memento_implementation::~memento_implementation()
+{
+    if (my_originator)
+    {
+        delete my_originator;
+    }
+    my_originator = nullptr;
+    
+    if (my_clone)
+    {
+        delete my_clone;
+    }
+    my_clone = nullptr;
+}
+*/
+const driver::memento_interface* driver::backup()
+{
+    return new memento_implementation(*this);
+}
+
+void driver::restore(const memento_interface* a_memento_interface)
+{
+    if (a_memento_interface == nullptr) 
+    {
+        throw dp_exception("a_memento_interface is null!");
+    }
+    const memento_implementation* a_memento_implementation = dynamic_cast<const memento_implementation* > (a_memento_interface);
+    if (a_memento_implementation == nullptr)
+    {
+        throw dp_exception("a_memento_implementation is null!");
+    }
+    if (a_memento_implementation->my_originator != this){
+        throw dp_exception("my_originator does not match!");
+    }
+    else
+    {
+        *this = *a_memento_implementation->my_clone;
+    }
+
+}
+
+

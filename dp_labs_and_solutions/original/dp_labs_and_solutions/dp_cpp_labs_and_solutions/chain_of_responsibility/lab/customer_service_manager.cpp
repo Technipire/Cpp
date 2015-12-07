@@ -1,0 +1,20 @@
+// customer_service_manager.cpp
+
+#include <iostream>
+#include "customer_requests_discount_event.h"
+#include "customer_service_manager.h"
+
+customer_service_manager::customer_service_manager()
+{
+}
+
+bool customer_service_manager::can_handle(customer_requests_discount_event * a_customer_requests_discount_event) const
+{
+	return (a_customer_requests_discount_event->get_percent() < 30);
+}
+
+void customer_service_manager::do_handle(customer_requests_discount_event * a_customer_requests_discount_event)
+{
+	std::cout << "I am a customer_service_manager." << std::endl;
+	std::cout << "I can give you a " << a_customer_requests_discount_event->get_percent() << "% discount." << std::endl;
+}

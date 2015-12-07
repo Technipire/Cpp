@@ -1,0 +1,18 @@
+// use_class.cpp
+
+#include <iostream>
+#include "dp_exception.h"
+#include "journey.h"
+#include "use_class.h"
+
+void use_class::use(journey * a_journey)
+{
+	if (a_journey == NULL)
+	{
+		throw dp_exception("void use_class::use(journey * a_journey) -- a_journey == NULL.");
+	}
+
+	a_journey->output(std::cout);
+    
+	std::cout << a_journey->get_number_of_stops() << ".\n";
+}

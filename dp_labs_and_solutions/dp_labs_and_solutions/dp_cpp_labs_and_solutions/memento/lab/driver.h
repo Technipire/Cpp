@@ -9,39 +9,16 @@ class driver
 {
 public:
 	driver(const std::string & a_name);
-
+        
 	void turn_left();
 	void go_straight(int how_far);
 	void turn_right();
 
 	void report_position() const;
-
 	driver * clone() const;
-	class memento_interface
-	{
-		protected:
-		  virtual void destroy = 0;
-	};
-
+       
 private:
-    class memento_implementation : public memento_interface
-	{
-		private:
-			bar* aObj;
-
-		memento_implementation(driver* a_originator)
-		{
-			aObj = a_originator->clone();
-		}
-		void destroy()
-		{
-			delete aObj;
-			aObj = NULL;
-		}
-		//need a getter here?
-		bar*
-		
-	};
+        
 	void set_name(const std::string & a_name);
 	const std::string & get_name() const;
 
@@ -55,8 +32,6 @@ private:
 	int get_heading() const;
 
 	std::string get_heading_as_string() const;
-	memento_interface* backup();
-	void restore(driver::memento_interface* iBackup);
 
 	static const int NORTH = 1;
 	static const int EAST  = 2;
@@ -67,6 +42,36 @@ private:
 	int my_x;
 	int my_y;
 	int my_heading;
+public:
+        class memento_interface
+        {
+            public:
+                virtual ~memento_interface() = 0;
+            protected:
+                memento_interface();
+            private:
+                memento_interface(const memento_interface& other);
+                memento_interface& operator = (const memento_interface& other);
+        };
+
+private:
+        class memento_implementation : public memento_interface
+        {
+            public:
+                memento_implementation(const driver& a_originator);
+                // virtual ~memento_implementation();
+                const driver* my_originator;
+                const driver* my_clone;        
+
+                
+            private:
+                memento_implementation(const memento_implementation& other);
+                memento_implementation& operator = (const memento_implementation& other);
+        };
+public:
+        const memento_interface* backup();
+        void restore(const memento_interface* a_memento_interface);
+
 };
 
 #endif

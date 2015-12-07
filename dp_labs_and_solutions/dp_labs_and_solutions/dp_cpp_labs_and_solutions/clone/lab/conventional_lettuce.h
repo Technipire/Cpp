@@ -8,14 +8,11 @@
 class conventional_lettuce : public lettuce
 {
 public:
-	conventional_lettuce(double a_price, int a_number_of_pesticides = 0);
+	conventional_lettuce(double a_price = 0, int a_number_of_pesticides = 0);
 	conventional_lettuce(const conventional_lettuce & other);
 	virtual ~conventional_lettuce();
-	virtual lettuce* clone() const
-	{
-		return new conventional_lettuce(*this);
-	}
 
+	virtual conventional_lettuce * clone() const;
 private:
 	int my_number_of_pesticides;
 };

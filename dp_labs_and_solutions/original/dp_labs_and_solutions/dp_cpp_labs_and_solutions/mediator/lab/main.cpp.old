@@ -1,0 +1,20 @@
+// main.cpp
+
+#include <cstdlib>
+#include <cstdio>
+#include <ctime>
+class consumer;
+#include "setup_class.h"
+#include "use_class.h"
+
+int main()
+{
+	// seed the random number generator:
+	srand((unsigned) time(NULL));
+
+	consumer * a_consumer = setup_class::setup();
+
+	use_class::use(a_consumer);
+
+	return 0;
+}

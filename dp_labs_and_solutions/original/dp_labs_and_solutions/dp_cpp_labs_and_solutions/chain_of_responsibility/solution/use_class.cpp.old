@@ -1,0 +1,21 @@
+// use_class.cpp
+
+#include "customer_requests_discount_event.h"
+#include "handler.h"
+#include "use_class.h"
+
+#ifndef NULL
+#define NULL 0
+#endif
+
+void use_class::use(handler * a_handler)
+{
+	if (a_handler == NULL)
+	{
+		// throw an exception.
+	}
+
+	customer_requests_discount_event * a_customer_requests_discount_event = new customer_requests_discount_event(25);
+
+	a_handler->handle(a_customer_requests_discount_event);
+}

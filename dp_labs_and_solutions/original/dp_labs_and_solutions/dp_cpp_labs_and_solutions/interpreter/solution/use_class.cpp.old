@@ -1,0 +1,47 @@
+// use_class.cpp
+
+#include <iostream>
+#include "dp_exception.h"
+#include "dp_map.h"
+#include "expression.h"
+#include "use_class.h"
+
+void use_class::use(expression * a_expression)
+{
+	if (a_expression == NULL)
+	{
+		throw dp_exception("void use_class::use(expression * a_expression) -- a_expression == NULL.");
+	}
+	a_expression->output(std::cout);
+	std::cout << std::endl;
+
+	if (a_expression == NULL)
+	{
+		throw dp_exception("void use_class::use(expression * a_expression) -- a_expression == NULL.");
+	}
+	std::cout << a_expression->get_number_of_uses_of_variable("a") << std::endl;
+
+	if (a_expression == NULL)
+	{
+		throw dp_exception("void use_class::use(expression * a_expression) -- a_expression == NULL.");
+	}
+	std::cout << a_expression->get_number_of_uses_of_variable("b") << std::endl;
+
+	if (a_expression == NULL)
+	{
+		throw dp_exception("void use_class::use(expression * a_expression) -- a_expression == NULL.");
+	}
+	std::cout << a_expression->get_number_of_uses_of_variable("c") << std::endl;
+
+	dp_map<std::string, double> * a_map = new dp_map<std::string, double>();
+
+	a_map->put("a",  3.0);
+	a_map->put("b", 10.0);
+	a_map->put("c",  7.0);
+
+	if (a_expression == NULL)
+	{
+		throw dp_exception("void use_class::use(expression * a_expression) -- a_expression == NULL.");
+	}
+	std::cout << a_expression->get_value(*a_map) << std::endl;
+}

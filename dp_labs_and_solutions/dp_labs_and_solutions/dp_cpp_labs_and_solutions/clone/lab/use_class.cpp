@@ -15,9 +15,11 @@ void use_class::use(lettuce * a_lettuce)
 	if (a_lettuce == nullptr)
 	{
 		a_copy = nullptr;
+                std::cout << "a_copy is NULL" << std::endl;
 	}
 	else
 	{
 		a_copy = a_lettuce->clone();
+                std::cout << typeid(*a_copy).name() << std::endl;
 	}
 }

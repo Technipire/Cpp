@@ -1,0 +1,33 @@
+// literal_flyweight_factory.cpp
+
+#include "dp_map.h"
+#include "literal.h"
+#include "literal_flyweight_factory.h"
+
+literal_flyweight_factory * literal_flyweight_factory::the_instance(NULL);
+
+literal * literal_flyweight_factory::get_flyweight_for(int a_value)
+{
+	if (!my_map.contains(a_value))
+	{
+		my_map.put(a_value, new literal(a_value));
+	}
+
+	literal * result = my_map.get(a_value);
+
+	return result;
+}
+
+literal_flyweight_factory::literal_flyweight_factory()
+{
+}
+
+literal_flyweight_factory & literal_flyweight_factory::get_instance()
+{
+	if (the_instance == NULL)
+	{
+		the_instance = new literal_flyweight_factory();
+	}
+
+	return *the_instance;
+}

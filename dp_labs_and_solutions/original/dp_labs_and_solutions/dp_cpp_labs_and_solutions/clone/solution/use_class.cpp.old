@@ -1,0 +1,29 @@
+// use_class.cpp
+
+#include <iostream>
+#include <typeinfo>
+#include "lettuce.h"
+#include "use_class.h"
+
+void use_class::use(lettuce * a_lettuce)
+{
+	lettuce * a_copy(NULL);
+
+	if (a_lettuce == NULL)
+	{
+		a_copy = NULL;
+	}
+	else
+	{
+		a_copy = a_lettuce->clone();
+	}
+
+	if (a_copy == NULL)
+	{
+		std::cout << "NULL" << std::endl;
+	}
+	else
+	{
+		std::cout << typeid(*a_copy).name() << std::endl;
+	}
+}
