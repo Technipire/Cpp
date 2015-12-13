@@ -8,9 +8,9 @@ class lettuce;
 class garden
 {
 public:
-	garden(lettuce* a_lettuce_type);
+	garden(lettuce* a_lettuce_prototype);
 
-	void set_lettuce_type(lettuce* a_lettuce_type);
+	void set_lettuce_type(lettuce* a_lettuce_prototype);
 
 	lettuce * make_lettuce() const;
 

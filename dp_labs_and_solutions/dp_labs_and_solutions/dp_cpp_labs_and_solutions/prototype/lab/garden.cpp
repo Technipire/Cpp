@@ -6,21 +6,21 @@
 #include "organic_lettuce.h"
 #include "garden.h"
 
-garden::garden(lettuce* a_lettuce_type)
+garden::garden(lettuce* a_lettuce_prototype)
 {
-	set_lettuce_type(a_lettuce_type);
+	set_lettuce_prototype(a_lettuce_prototype);
 }
 
-void garden::set_lettuce_type(lettuce* a_lettuce_type)
+void garden::set_lettuce_prototype(lettuce* a_lettuce_prototype)
 {
-	if (!a_lettuce_type) 
+	if (!a_lettuce_prototype) 
 	{
-		return;
+            throw dp_exception("a_lettuce_prototype is NULL!");
 	}
-	my_lettuce_type = a_lettuce_type->clone();
+	my_lettuce_prototype = a_lettuce_prototype->clone();
 }
 
 lettuce * garden::make_lettuce() const
 {
-	return my_lettuce_type;
+	return my_lettuce_prototype;
 }
