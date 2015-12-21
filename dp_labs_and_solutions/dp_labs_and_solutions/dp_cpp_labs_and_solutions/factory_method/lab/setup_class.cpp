@@ -1,7 +1,8 @@
 // setup_class.cpp
 
 #include "setup_class.h"
-#include "garden.h"
+#include "conventional_garden.h"
+class garden;
 
 garden * setup_class::setup()
 {

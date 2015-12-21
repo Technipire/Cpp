@@ -3,8 +3,6 @@
 
 class organic_garden : public garden
 {
-	private:
-		organic_garden();
-		organic_garden(const & aGarden);
-		virtual organic_tomato* make_tomato();
-}
+    public:
+        virtual organic_tomato* make_tomato();
+};

@@ -1,9 +1,7 @@
-#include "garden.h"
+#include "conventional_garden.h"
 
-class conventional_garden : public garden
+conventional_tomato* conventional_garden::make_tomato()
 {
-	conventional_tomato* make_tomato()
-	{
-		return new conventioal_tomato(3, 1);
-	}
-};
+        return new conventional_tomato(3, 1);
+}
+
