@@ -7,9 +7,10 @@
 
 class organic_garden : public garden
 {
+    public:
 	organic_garden(organic_lettuce* a_lettuce_prototype);
 	void set_lettuce_prototype(organic_lettuce* a_lettuce_prototype);
-	organic_tomato* make_tomato();
-}
+	virtual organic_tomato* make_tomato() const;
+};
 
 #endif

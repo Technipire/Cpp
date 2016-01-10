@@ -9,11 +9,11 @@
 
 void use_class::use()
 {
-	lettuce * a_lettuce = garden::get_instance();
+	lettuce * a_lettuce = garden::get_instance().make_lettuce();
 
 	std::cout << typeid(*a_lettuce).name() << std::endl;
 
-	tomato * a_tomato = garden::get_instance();
+	tomato * a_tomato = garden::get_instance().make_tomato();
 
 	std::cout << typeid(*a_tomato).name() << std::endl;
 }

@@ -10,13 +10,14 @@ class garden
 {
 protected:
 	garden(lettuce* a_lettuce_prototype);
-	set_lettuce_prototype(lettuce* a_lettuce_prototype);
-public
-	lettuce * make_lettuce() const;
-	tomato  * make_tomato () const;
-
+	void set_lettuce_prototype(lettuce* a_lettuce_prototype);
+public:
+	lettuce* make_lettuce() const;
+	virtual tomato* make_tomato () const = 0;
 private:
+
 	lettuce* my_lettuce;
+
 };
 
 #endif

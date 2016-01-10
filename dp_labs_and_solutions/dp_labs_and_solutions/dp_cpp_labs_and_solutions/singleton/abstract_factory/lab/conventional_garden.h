@@ -9,12 +9,9 @@ class conventional_lettuce;
 
 class conventional_garden : public garden
 {
-private:
+public:
 	conventional_garden(conventional_lettuce * a_lettuce_prototype);
 	friend garden& garden::get_instance();
-	
-public:
-
 	virtual conventional_tomato * make_tomato() const;
 };
 

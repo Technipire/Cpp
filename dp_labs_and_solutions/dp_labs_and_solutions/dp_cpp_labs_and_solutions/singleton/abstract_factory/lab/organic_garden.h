@@ -9,10 +9,9 @@ class organic_lettuce;
 
 class organic_garden : public garden
 {
-private
+public:
 	organic_garden(organic_lettuce * a_lettuce_prototype);
 	friend garden& garden::get_instance();
-public:
 	virtual organic_tomato * make_tomato() const;
 };
 

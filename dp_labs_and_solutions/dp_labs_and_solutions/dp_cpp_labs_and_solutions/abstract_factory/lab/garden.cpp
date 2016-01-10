@@ -9,60 +9,24 @@
 #include "garden.h"
 #include "tomato.h"
 
-garden::garden(int a_lettuce_type, int a_tomato_type)
+garden::garden(lettuce* a_lettuce_prototype)
 {
-	set_lettuce_type(a_lettuce_type);
-	set_tomato_type(a_tomato_type);
+	set_lettuce_prototype(a_lettuce_prototype);
 }
 
-void garden::set_lettuce_type(int a_lettuce_type)
+void garden::set_lettuce_prototype(lettuce* a_lettuce_prototype)
 {
-	if (a_lettuce_type != 1 && a_lettuce_type != 2)
+	if (a_lettuce_prototype == nullptr)
 	{
-		throw dp_exception("void garden::set_lettuce_type(int a_lettuce_type) -- A garden must have a valid lettuce type.");
+		throw dp_exception("void garden::set_lettuce_prototype(int a_lettuce_type) -- A garden must have a valid lettuce type.");
 	}
 
-	my_lettuce_type = a_lettuce_type;
+	my_lettuce = a_lettuce_prototype->clone();
 }
 
-void garden::set_tomato_type(int a_tomato_type)
+lettuce* garden::make_lettuce() const
 {
-	if (a_tomato_type != 1 && a_tomato_type != 2)
-	{
-		throw dp_exception("void garden::set_tomato_type(int a_tomato_type) -- A garden must have a valid tomato type.");
-	}
-
-	my_tomato_type = a_tomato_type;
+    return my_lettuce;
 }
 
-lettuce * garden::make_lettuce() const
-{
-	if (my_lettuce_type == 1)
-	{
-		return new conventional_lettuce(1, 2);
-	}
-	else if (my_lettuce_type == 2)
-	{
-		return new organic_lettuce(1, 2);
-	}
-	else
-	{
-		throw dp_exception("lettuce * garden::make_lettuce() -- Oops, should never reach this point.");
-	}
-}
 
-tomato * garden::make_tomato() const
-{
-	if (my_tomato_type == 1)
-	{
-		return new conventional_tomato(1, 2);
-	}
-	else if (my_tomato_type == 2)
-	{
-		return new organic_tomato(1, 2);
-	}
-	else
-	{
-		throw dp_exception("tomato * garden::make_tomato() -- Oops, should never reach this point.");
-	}
-}

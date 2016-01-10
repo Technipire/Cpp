@@ -1,10 +1,6 @@
 // single_journey.cpp
-
-#include <iostream>
-#include <string>
 #include "dp_exception.h"
 #include "single_journey.h"
-
 single_journey::single_journey(const std::string & a_address)
 {
 	if (a_address == "")

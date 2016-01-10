@@ -10,7 +10,6 @@ organic_garden::organic_garden(organic_lettuce * a_lettuce_prototype)
 {
 }
 
-
 organic_tomato * organic_garden::make_tomato() const
 {
 	return new organic_tomato(1, 2);

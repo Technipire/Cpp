@@ -1,6 +1,5 @@
 // main.cpp
 
-#include "setup_class.h"
 class garden;
 #include "use_class.h"
 

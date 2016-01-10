@@ -7,9 +7,10 @@
 
 class conventional_garden : public garden
 {
+public:
 	conventional_garden(conventional_lettuce* a_lettuce_prototype);
-	void set_lettuce_prototype(conventional_lettuce* a_lettuce_prototype);
-	conventional_tomato* make_tomato();
-}
+	virtual void set_lettuce_prototype(conventional_lettuce* a_lettuce_prototype);
+	virtual conventional_tomato* make_tomato() const;
+};
 
 #endif

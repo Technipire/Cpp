@@ -8,7 +8,7 @@ class garden;
 class use_class
 {
 public:
-	static void use(garden * a_garden);
+	static void use();
 };
 
 #endif
