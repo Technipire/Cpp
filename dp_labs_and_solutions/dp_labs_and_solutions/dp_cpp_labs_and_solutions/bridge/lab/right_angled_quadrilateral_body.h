@@ -3,9 +3,10 @@
 
 class right_angled_quadrilateral_body
 {
-	virtual double get_height() = 0;
-	virtual double get_width() = 0;
-	virtual bool is_square() = 0;
+    public:
+        virtual double get_height() const = 0;
+        virtual double get_width() const = 0;
+        virtual bool is_square() const = 0;
 };
 
 #endif

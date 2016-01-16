@@ -9,13 +9,8 @@ class journey
 {
 public:
 	virtual void output(std::ostream & a_ostream) const = 0;
-	static int get_number_of_stops()
-	{
-		return the_num_of_stops;
-	}
-	static int the_num_of_stops;
+  virtual int get_number_of_stops() const = 0;
 
-	
 };
 
 #endif

@@ -20,11 +20,13 @@ public:
 	void add_journey(journey * a_journey);
 	dp_const_iterator<journey *> * get_journeys() const;
 	      dp_iterator<journey *> * get_journeys()      ;
+    virtual int get_number_of_stops() const;
 		  
 
 private:
 	std::string          my_name;
 	dp_vector<journey *> my_journeys;
+    int number_of_stops = 0;
 };
 
 #endif

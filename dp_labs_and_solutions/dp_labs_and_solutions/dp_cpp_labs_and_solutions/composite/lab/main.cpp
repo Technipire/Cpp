@@ -5,7 +5,7 @@
 
 int main()
 {
-	journey::the_num_of_stops = 0;
+	//journey::number_of_stops = 0;
 	journey * a_journey = setup_class::setup();
 
 	use_class::use(a_journey);

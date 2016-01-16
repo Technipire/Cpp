@@ -10,7 +10,7 @@
 
 multiple_journey::multiple_journey(const std::string & a_name)
 {
-	if (a_name == "")
+	if (a_name.empty())
 	{
 		throw dp_exception("multiple_journey::multiple_journey(const std::string & a_name) -- a_name == \"\".");
 	}
@@ -40,6 +40,7 @@ void multiple_journey::add_journey(journey * a_journey)
 		throw dp_exception("void multiple_journey::add_journey(journey * a_journey) -- a_journey == nullptr.");
 	}
 	my_journeys.add(a_journey);
+    number_of_stops += a_journey->get_number_of_stops();
 }
 
 
@@ -51,4 +52,9 @@ dp_const_iterator<journey *> * multiple_journey::get_journeys() const
 dp_iterator<journey *> * multiple_journey::get_journeys()
 {
 	return my_journeys.make_iterator();
+}
+
+int multiple_journey::get_number_of_stops() const
+{
+    return number_of_stops;
 }
