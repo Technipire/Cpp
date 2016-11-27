@@ -1,5 +1,5 @@
 #include "journey_builder.h"
-
+class journey;
 class journey_tree_builder : public journey_builder
 {
 public:
